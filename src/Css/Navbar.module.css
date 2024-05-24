@@ -1,0 +1,13 @@
+.navbar {
+    background-color: #2C5F2D; 
+    padding: 30px;
+  }
+  
+  .navbarBrand,
+  .navLink,
+  .dropdownToggle {
+    color: white !important;
+  }
+  .navbarTogglerIcon {
+  background-color: white;
+  }
