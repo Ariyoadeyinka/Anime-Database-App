@@ -47,7 +47,7 @@ export default function Navbar() {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Account
+              My Account
             </a>
             <div
               className="dropdown-menu dropdown-menu-right"
