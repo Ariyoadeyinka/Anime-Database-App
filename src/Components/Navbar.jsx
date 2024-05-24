@@ -3,7 +3,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar navbar-expand-lg navbar-light ${styles.navbar}`}>
       <a className={`navbar-brand ${styles.navbarBrand}`} href="#">
-        Site Name
+      MyAnime🍥
       </a>
       <button
         className={`navbar-toggler ${styles.navbarTogglerIcon}`}
