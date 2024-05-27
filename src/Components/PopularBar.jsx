@@ -1,3 +1,3 @@
 export default function PopularBar() {
-  return <div>Poopular</div>;
+  return <div></div>;
 }

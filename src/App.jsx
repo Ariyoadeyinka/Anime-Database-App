@@ -4,12 +4,11 @@ import Navbar from "./Components/Navbar";
 import Search from "./Components/Search";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [query, setQuery]= useState("")
   return (
-    <div className="App">
+    <div>
       <Navbar />
-      <Search/>
+      <Search query = {query} setQuery = {setQuery}/>
       <PopularBar />
     </div>
   );

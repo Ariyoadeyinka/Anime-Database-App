@@ -1,13 +1,19 @@
 import styles from "../Css/Search.module.css";
-export default function Search() {
+export default function Search({ query, setQuery }) {
+  const handleInputValue = (e) => {
+    const { value } = e.target;
+    setQuery(value);
+    console.log(value);
+  };
   return (
     <div>
-      <div className={styles.searchContainer}>
-        <input type="text" />
+      <form className={styles.searchContainer}>
+        <input type="text" onChange={handleInputValue} value={query} />
         <button className={styles.Search}>
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-      </div>
+      </form>
+
       <div className={styles.container}>
         <button className={styles.Popular}>
           Popular <i class="fa-solid fa-fire"></i>
