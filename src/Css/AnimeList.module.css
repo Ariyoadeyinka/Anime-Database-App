@@ -1,23 +1,7 @@
-.animeListContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-    
-  .animeCard {
-    width: 200px;
+.animeCard{
+    margin-top: 60px;
+    color: #2c5f2d;
+    font-weight: 400;
     text-align: center;
-    background-color: red;
-    height: 500px;
-  }
-    
-  .animeCard img {
-    width: 100%;
-    border-radius: 8px;
-  }
-    
-  .animeCard h3 {
-    margin-top: 10px;
-    font-size: 16px;
-  }
-  
+}
+

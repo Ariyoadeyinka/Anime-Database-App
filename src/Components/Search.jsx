@@ -9,7 +9,7 @@ export default function Search({ query, setQuery }) {
     setLoading(true);
     async function getAnime() {
       const apiresponse = await fetch(
-        `https://api.jikan.moe/v4/anime?q=${searchData}&limit=10`
+        `https://api.jikan.moe/v4/anime?q=${searchData}`
       );
       const result = await apiresponse.json();
 
@@ -52,18 +52,11 @@ export default function Search({ query, setQuery }) {
           Upcoming <i class="fa-solid fa-calendar-days"></i>
         </button>
       </div>
-      {anime && anime.length > 0
-        ? anime.map((item) => (
+    
             <AnimeList
-              id={item.mal_id}
-              image={item.images.jpg.image_url}
-              title={item.title}
-              airingStatus={item.status}
-              rank={item.rank}
-              rating={item.rating}
+             anime = {anime}
             />
-          ))
-        : null}
+       
     </div>
   );
 }
