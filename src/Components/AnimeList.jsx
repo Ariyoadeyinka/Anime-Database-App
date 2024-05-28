@@ -20,7 +20,9 @@ export default function AnimeList({ anime }) {
               </div>
               <div className="card-body">
                 <h5 className="card-title">{anime.title}</h5>
+                <button className={styles.knowMore}>Know More <i class="fa-solid fa-circle-info"></i></button>
               </div>
+              
             </div>
           </div>
         ))}
