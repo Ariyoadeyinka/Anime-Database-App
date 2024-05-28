@@ -46,12 +46,25 @@ export default function Search({ query, setQuery }) {
       const {data} = result;
       setAnime(data);
     } catch (error) {
-      console.error("Error fetching popular anime:", error);
+      console.error("Error fetching Airing anime:", error);
     } finally {
       setLoading(false);
     }
   }
 
+  const getUpcoming= async() => {
+    setLoading(true);
+    try {
+      const res = await fetch('https://api.jikan.moe/v4/top/anime?filter=upcoming')
+      const result = await res.json();
+      const {data} = result;
+      setAnime(data);
+    } catch (error) {
+      console.error("Error fetching Upcoming anime:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
   const handleInputValue = (e) => {
     const { value } = e.target;
     setQuery(value);
@@ -80,7 +93,7 @@ export default function Search({ query, setQuery }) {
         <button className={styles.Airing} onClick={getAiring}>
           Airing <i className="fa-solid fa-clock"></i>
         </button>
-        <button className={styles.Upcoming}>
+        <button className={styles.Upcoming} onClick={getUpcoming}>
           Upcoming <i className="fa-solid fa-calendar-days"></i>
         </button>
       </div>
