@@ -13,6 +13,11 @@ export default function AnimeList({ anime }) {
                 className={`card-img-top ${styles.searchedImages}`}
                 alt={anime.title}
               />
+              <div className={styles.content}>
+                <button><i class="fa-regular fa-heart"></i></button>
+
+                <button><i class="fa-regular fa-clock"></i></button>
+              </div>
               <div className="card-body">
                 <h5 className="card-title">{anime.title}</h5>
               </div>

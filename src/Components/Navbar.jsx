@@ -24,17 +24,13 @@ export default function Navbar() {
         <ul className="navbar-nav">
           <li className="nav-item">
             <a className={`nav-link ${styles.navLink}`} href="#">
-              Watching now
+              Favorites <i class="fa-solid fa-heart"></i>
             </a>
           </li>
+        
           <li className="nav-item">
             <a className={`nav-link ${styles.navLink}`} href="#">
-              Finished
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className={`nav-link ${styles.navLink}`} href="#">
-              Watch Later
+              Watch Later <i class="fa-regular fa-clock"></i>
             </a>
           </li>
           <li className="nav-item dropdown">
