@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import styles from "../Css/Search.module.css";
 import AnimeList from "./AnimeList";
 
-export default function Search({ query, setQuery, setAnimeId }) {
+export default function Search({ query, setQuery, setAnimeId, anime, setAnime }) {
   const [loading, setLoading] = useState(false);
-  const [anime, setAnime] = useState([]);
+
 
   const getsearchData = async (searchData) => {
     setLoading(true);
