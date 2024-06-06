@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "../Css/AnimeList.module.css";
 
 export default function AnimeList({ anime, setAnimeId }) {
@@ -24,15 +25,17 @@ export default function AnimeList({ anime, setAnimeId }) {
               </div>
               <div className="card-body">
                 <h5 className="card-title">{anime.title}</h5>
-                <button
-                  className={styles.knowMore}
-                  onClick={() => {
-                    console.log(anime.mal_id);
-                    setAnimeId(anime.mal_id);
-                  }}
-                >
-                  Know More <i class="fa-solid fa-circle-info"></i>
-                </button>
+                <Link to= {`/anime/${anime.mal_id}`}>
+                  <button
+                    className={styles.knowMore}
+                    onClick={() => {
+                      console.log(anime.mal_id);
+                      setAnimeId(anime.mal_id);
+                    }}
+                  >
+                    Know More <i class="fa-solid fa-circle-info"></i>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -8,7 +8,7 @@ import AnimeDetail from "./Components/AnimeDetail";
 function App() {
   const [query, setQuery] = useState("");
   const [anime, setAnime] = useState([]);
-  const [animeId, setAnimeId] = useState("20");
+  const [animeId, setAnimeId] = useState("");
   return (
     <Router>
       <div>
@@ -24,7 +24,7 @@ function App() {
             />
           </Route>
 
-          <Route path="/detail">
+          <Route path="/anime/:id">
             <AnimeDetail animeId={animeId} anime={anime} setAnime={setAnime} />
           </Route>
         </Switch>
