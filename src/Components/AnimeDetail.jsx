@@ -78,6 +78,22 @@ export default function AnimeDetail({ animeId }) {
               </li>
             ))}
           </ul>
+
+          <div>
+            <h2>Trailer:</h2>
+            <div className={styles.trailerContainer}>
+              {anime.trailer && anime.trailer.embed_url ? (
+                <iframe
+                  className={styles.trailerIframe}
+                  title={`${anime.title} Trailer`}
+                  src={anime.trailer.embed_url}
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <p>No trailer available</p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
