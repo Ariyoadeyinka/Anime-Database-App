@@ -25,7 +25,7 @@ export default function AnimeList({ anime, setAnimeId }) {
               </div>
               <div className="card-body">
                 <h5 className="card-title">{anime.title}</h5>
-                <Link to= {`/anime/${anime.mal_id}`}>
+                <Link to={`/anime/${anime.mal_id}`}>
                   <button
                     className={styles.knowMore}
                     onClick={() => {
