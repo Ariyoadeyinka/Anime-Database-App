@@ -49,7 +49,7 @@ export default function AnimeDetail({ animeId }) {
                 <h5>Status:</h5> <p>{anime.status}</p>
               </div>
               <div className={styles.textContainercontents}>
-                <h5>Imdb Score:</h5> <p>{anime.score}</p>
+                <h5>IMDB score:</h5> <p>{anime.score}</p>
               </div>
               <div className={styles.textContainercontents}>
                 <h5>Genres:</h5>

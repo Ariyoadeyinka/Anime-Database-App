@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "../Css/Navbar.module.css";
 export default function Navbar() {
   return (
@@ -52,9 +53,11 @@ export default function Navbar() {
               <a className="dropdown-item" href="#">
                 Sign up
               </a>
+              <Link to="/login">
               <a className="dropdown-item" href="#">
                 Log in
               </a>
+              </Link>
             </div>
           </li>
         </ul>
