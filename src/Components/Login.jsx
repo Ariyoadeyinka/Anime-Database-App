@@ -1,5 +1,5 @@
 import styles from "../Css/Login.module.css";
-import backgroundImage from '../Assets/Loginimg.jpg';
+import backgroundImage from '../Assets/LoginImg.jpg';
 
 export default function Login() {
   return (
