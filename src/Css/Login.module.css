@@ -77,4 +77,25 @@
       border-radius: 0 0 15px 15px;
     }
   }
-  
+  .loginUsername{
+  padding: 8px;
+  width: 100%;
+  border: 2px solid #97BC62;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  }
+  .loginPass{
+    padding: 8px;
+    width: 100%;
+    border: 2px solid #97BC62;
+    border-radius: 8px;
+  }
+  .loginButton{
+    padding: 5px;
+    width: 25%;
+    border: 2px solid #97BC62;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
