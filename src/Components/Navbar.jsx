@@ -50,9 +50,11 @@ export default function Navbar() {
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
             >
+              <Link to="/signup">
               <a className="dropdown-item" href="#">
                 Sign up
-              </a>
+              </a></Link>
+
               <Link to="/login">
               <a className="dropdown-item" href="#">
                 Log in

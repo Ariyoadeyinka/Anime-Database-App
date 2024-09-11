@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import Search from "./Components/Search";
 import AnimeDetail from "./Components/AnimeDetail";
 import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -32,6 +33,10 @@ function App() {
 
           <Route path="/login">
             <Login />
+          </Route>
+
+          <Route path="/signup">
+          <SignUp/>
           </Route>
         </Switch>
 
