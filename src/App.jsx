@@ -6,6 +6,7 @@ import Search from "./Components/Search";
 import AnimeDetail from "./Components/AnimeDetail";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -16,6 +17,7 @@ function App() {
     <Router>
       <div>
         <Navbar />
+        <AuthProvider>
         <Switch>
           <Route exact path="/">
             <Search
@@ -39,7 +41,7 @@ function App() {
           <SignUp/>
           </Route>
         </Switch>
-
+        </AuthProvider>
         <PopularBar />
       </div>
     </Router>
