@@ -2,16 +2,30 @@ import styles from "../Css/Login.module.css";
 import backgroundImage from '../Assets/LoginImg.jpg';
 import { useRef } from "react";
 import {useAuth} from '../context/AuthContext'
+import { useState } from "react";
+import { Alert } from 'react-bootstrap';
 export default function Signup(){
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
     const {signup} = useAuth()
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
          e.preventDefault()
-
-         signup(emailRef.current.value, passwordRef.current.value)
+    
+         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+          return setError('Passwords do not match')
+         }
+         try {
+          setError('')
+          setLoading(true)
+        await signup(emailRef.current.value, passwordRef.current.value)
+         } catch {
+          setError('Failed to create an account')
+         }
+         setLoading(false)
     }
     return(
 <div className={styles.container}>
@@ -25,11 +39,12 @@ export default function Signup(){
           </div>
         </div>
         <div className={styles.loginForm}>
-          <form action="">
+          {error && <Alert variant="danger">{error}</Alert>}
+          <form onSubmit={handleSubmit}>
           <input type="email" placeholder="Email" className={styles.loginUsername} ref={emailRef}/>
             <input type="password" name="" id="" placeholder="Password"  className={styles.loginPass} ref={passwordRef}/>
             <input type="password" name="" id="" placeholder="Confirm Password"  className={styles.loginPass} ref={passwordConfirmRef}/>
-            <button className={styles.loginButton} onClick={handleSubmit}>Sign Up</button>
+            <button className={styles.loginButton} disabled={loading}>Sign Up</button>
           </form>
         </div>
       </div>

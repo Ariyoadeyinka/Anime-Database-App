@@ -7,6 +7,7 @@ import AnimeDetail from "./Components/AnimeDetail";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import { AuthProvider } from "./context/AuthContext";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [query, setQuery] = useState("");
