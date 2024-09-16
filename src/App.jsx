@@ -6,6 +6,7 @@ import Search from "./Components/Search";
 import AnimeDetail from "./Components/AnimeDetail";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
+import UpdateProfile from "./Components/UpdateProfile";
 import ForgotPassword from "./Components/ForgotPassword";
 import PrivateRoute from "./Components/PrivateRoute"; 
 import { AuthProvider } from "./context/AuthContext";
@@ -42,6 +43,15 @@ function App() {
                 <PrivateRoute>
                   <Navbar />
                   <AnimeDetail animeId={animeId} anime={anime} setAnime={setAnime} />
+                </PrivateRoute>
+              }
+            />
+              <Route
+              path="/update-profile"
+              element={
+                <PrivateRoute>
+                  <Navbar />
+                  <UpdateProfile/>
                 </PrivateRoute>
               }
             />

@@ -69,7 +69,7 @@ export default function Navbar() {
               className="dropdown-menu dropdown-menu-right"
               aria-labelledby="navbarDropdown"
             >
-              <Link to="/signup">
+              <Link to="/update-profile">
                 <a className="dropdown-item" href="#">
                   My Profile
                 </a>

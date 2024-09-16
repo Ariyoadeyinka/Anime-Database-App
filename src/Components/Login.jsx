@@ -49,12 +49,14 @@ export default function Login() {
               placeholder="Email" 
               className={styles.loginUsername} 
               ref={emailRef} 
+              required
             />
             <input 
               type="password" 
               placeholder="Password" 
               className={styles.loginPass} 
               ref={passwordRef} 
+              required
             />
             <button 
               className={styles.loginButton} 

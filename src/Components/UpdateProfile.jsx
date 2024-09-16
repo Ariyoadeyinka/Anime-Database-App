@@ -10,27 +10,37 @@ export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
+  const {currentUser, updatePassword, updateEmail} = useAuth("")
   const { signup } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();  
 
-  async function handleSubmit(e) {
+function handleSubmit(e) {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError('Passwords do not match');
     }
 
-    try {
-      setError('');
-      setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      navigate("/"); 
-    } catch {
-      setError('Failed to create an account');
+    const promises = []
+    setLoading(true);
+    setError("")
+    if (emailRef.current.value !== currentUser.email){
+        promises.push(updateEmail(emailRef.current.value))
     }
-    setLoading(false);
+    if (passwordRef.current.value){
+        promises.push(updatePassword(passwordRef.current.value))
+    }
+
+    Promise.all(promises).then(() => {
+        navigate("/")
+    }).catch(()=>{
+        setError("Failed to update account")
+    }).finally(() => {
+        setLoading(false)
+    })
+
   }
 
   return (
@@ -54,24 +64,25 @@ export default function Signup() {
               type="email" 
               placeholder="Email" 
               className={styles.loginUsername} 
-              ref={emailRef} 
+              ref={emailRef}
+              defaultValue={currentUser.email} 
               required
             />
             <input 
               type="password" 
-              placeholder="Password" 
+              placeholder="Leave blank to keep the same" 
               className={styles.loginPass} 
               ref={passwordRef} 
               required
             />
             <input 
               type="password" 
-              placeholder="Confirm Password" 
+              placeholder="Leave blank to keep the same" 
               className={styles.loginPass} 
               ref={passwordConfirmRef} 
               required
             />
-            <button className={styles.loginButton} disabled={loading}>Sign Up</button>
+            <button className={styles.loginButton} disabled={loading}>Update Profile</button>
           </form>
         </div>
       </div>
