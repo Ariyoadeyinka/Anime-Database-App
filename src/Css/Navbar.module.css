@@ -1,6 +1,6 @@
 .navbar {
-  background-color: #2c5f2d;
-  padding: 30px;
+  background-color: #2c5f2d !important; /* Override Bootstrap */
+  padding: 25px !important;
 }
 
 .navbarBrand,
@@ -8,18 +8,21 @@
 .dropdownToggle {
   color: white !important;
 }
+
 .navbarTogglerIcon {
-  background-color: white;
+  background-color: white !important;
 }
+
 @media (min-width: 992px) {
   .navLink {
-    border: 2px solid White;
-    margin-right: 30px;
+    border: 2px solid white !important;
+    margin-right: 30px !important;
   }
   .navLink:hover {
-    background-color: #97BC62;
+    background-color: #97BC62 !important;
   }
 }
-.navbarBrand{
-    font-size: 30px;
+
+.navbarBrand {
+  font-size: 30px !important;
 }

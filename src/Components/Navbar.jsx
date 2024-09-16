@@ -1,10 +1,29 @@
 import { Link } from "react-router-dom";
 import styles from "../Css/Navbar.module.css";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 export default function Navbar() {
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();  // Replaced useHistory with useNavigate
+
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      navigate("/login");  // Replaced history.push with navigate
+    } catch {
+      console.log("failed to logout");
+    }
+  }
+
   return (
     <nav className={`navbar navbar-expand-lg navbar-light ${styles.navbar}`}>
       <a className={`navbar-brand ${styles.navbarBrand}`} href="#">
-      MyAnime🍥
+        MyAnime🍥
       </a>
       <button
         className={`navbar-toggler ${styles.navbarTogglerIcon}`}
@@ -25,13 +44,13 @@ export default function Navbar() {
         <ul className="navbar-nav">
           <li className="nav-item">
             <a className={`nav-link ${styles.navLink}`} href="#">
-              Favorites <i class="fa-solid fa-heart"></i>
+              Favorites <i className="fa-solid fa-heart"></i>
             </a>
           </li>
-        
+
           <li className="nav-item">
             <a className={`nav-link ${styles.navLink}`} href="#">
-              Watch Later <i class="fa-regular fa-clock"></i>
+              Watch Later <i className="fa-regular fa-clock"></i>
             </a>
           </li>
           <li className="nav-item dropdown">
@@ -51,14 +70,15 @@ export default function Navbar() {
               aria-labelledby="navbarDropdown"
             >
               <Link to="/signup">
-              <a className="dropdown-item" href="#">
-                Sign up
-              </a></Link>
+                <a className="dropdown-item" href="#">
+                  My Profile
+                </a>
+              </Link>
 
               <Link to="/login">
-              <a className="dropdown-item" href="#">
-                Log in
-              </a>
+                <button className="dropdown-item" onClick={handleLogout}>
+                  Log Out
+                </button>
               </Link>
             </div>
           </li>
