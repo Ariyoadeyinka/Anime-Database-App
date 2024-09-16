@@ -7,14 +7,14 @@ import { useState } from "react";
 export default function Navbar() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
-  const navigate = useNavigate();  // Replaced useHistory with useNavigate
+  const navigate = useNavigate();  
 
   async function handleLogout() {
     setError("");
 
     try {
       await logout();
-      navigate("/login");  // Replaced history.push with navigate
+      navigate("/login");  
     } catch {
       console.log("failed to logout");
     }

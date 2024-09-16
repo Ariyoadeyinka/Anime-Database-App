@@ -1,34 +1,31 @@
+import { Link } from "react-router-dom";
 import styles from "../Css/Login.module.css";
 import backgroundImage from '../Assets/LoginImg.jpg';
 import { useRef } from "react";
 import { useAuth } from '../context/AuthContext';
 import { useState } from "react";
 import { Alert } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";  
+import { useNavigate } from "react-router-dom";
 
-export default function Signup() {
+export default function forgotPassword() {
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { resetPassword } = useAuth();
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();  
+  const navigate = useNavigate(); 
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match');
-    }
-
+    
     try {
+        setMessage('')
       setError('');
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      navigate("/"); 
+      await resetPassword(emailRef.current.value);
+      setMessage("Check your inbox for further instructions");  
     } catch {
-      setError('Failed to create an account');
+      setError('Failed to Reset password');
     }
     setLoading(false);
   }
@@ -41,14 +38,13 @@ export default function Signup() {
           <div className={styles.imageOverlay}>
             <div>
               <h1 className="text-center">🍥Welcome🍥</h1>
-              <p className="text-center">
-                To The Biggest Anime Database On The Internet
-              </p>
-            </div> 
+              <p className="text-center">To The Biggest Anime Database On The Internet</p>
+            </div>
           </div>
         </div>
         <div className={styles.loginForm}>
           {error && <Alert variant="danger">{error}</Alert>}
+          {message && <Alert variant="danger">{message}</Alert>}
           <form onSubmit={handleSubmit}>
             <input 
               type="email" 
@@ -56,20 +52,15 @@ export default function Signup() {
               className={styles.loginUsername} 
               ref={emailRef} 
             />
-            <input 
-              type="password" 
-              placeholder="Password" 
-              className={styles.loginPass} 
-              ref={passwordRef} 
-            />
-            <input 
-              type="password" 
-              placeholder="Confirm Password" 
-              className={styles.loginPass} 
-              ref={passwordConfirmRef} 
-            />
-            <button className={styles.loginButton} disabled={loading}>Sign Up</button>
+         
+            <button 
+              className={styles.loginButton} 
+              disabled={loading}
+            >
+              Reset Password
+            </button>
           </form>
+          <Link to="/login">Log in</Link>
         </div>
       </div>
     </div>

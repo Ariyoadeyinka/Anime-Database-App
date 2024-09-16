@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Updated Switch to Routes
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; 
 import { useState } from "react";
 import PopularBar from "./Components/PopularBar";
 import Navbar from "./Components/Navbar";
@@ -6,7 +6,8 @@ import Search from "./Components/Search";
 import AnimeDetail from "./Components/AnimeDetail";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
-import PrivateRoute from "./Components/PrivateRoute"; // Ensure this is also updated to work with v6
+import ForgotPassword from "./Components/ForgotPassword";
+import PrivateRoute from "./Components/PrivateRoute"; 
 import { AuthProvider } from "./context/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -46,6 +47,7 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/forgot-password" element={<ForgotPassword/>}/>
           </Routes>
         </AuthProvider>
         <PopularBar />

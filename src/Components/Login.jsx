@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import styles from "../Css/Login.module.css";
 import backgroundImage from '../Assets/LoginImg.jpg';
 import { useRef } from "react";
 import { useAuth } from '../context/AuthContext';
 import { useState } from "react";
 import { Alert } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";  // Replace useHistory with useNavigate
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const emailRef = useRef();
@@ -12,7 +13,7 @@ export default function Login() {
   const { login } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();  // Replaced useHistory with useNavigate
+  const navigate = useNavigate(); 
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +22,7 @@ export default function Login() {
       setError('');
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      navigate("/");  // Replaced history.push with navigate
+      navigate("/");  
     } catch {
       setError('Failed to log in');
     }
@@ -62,7 +63,7 @@ export default function Login() {
               Log In
             </button>
           </form>
-          <a href="" className={styles.forgotPass}>Forgot password?</a>
+          <Link to="/forgot-password">Forgot password?</Link>
         </div>
       </div>
     </div>
