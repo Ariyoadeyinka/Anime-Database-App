@@ -35,7 +35,9 @@ export default function Signup() {
   }
 
   return (
-    <div className={styles.container}>
+    <div>
+       <div className={styles.headerText}><h1>Sign Up</h1></div>
+      <div className={styles.container}>
       <div className={styles.loginDiv}>
         <div className={styles.imageContainer}>
           <img src={backgroundImage} alt="" />
@@ -75,6 +77,7 @@ export default function Signup() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -31,14 +31,17 @@ export default function forgotPassword() {
   }
 
   return (
-    <div className={styles.container}>
+    <div>
+       <div className={styles.headerText}><h1>Forgot Password</h1></div>
+       <div className={styles.container}>
       <div className={styles.loginDiv}>
         <div className={styles.imageContainer}>
           <img src={backgroundImage} alt="" />
           <div className={styles.imageOverlay}>
-            <div>
+          <div>
               <h1 className="text-center">🍥Welcome🍥</h1>
-              <p className="text-center">To The Biggest Anime Database On The Internet</p>
+              <p className="text-center">Remember you password?</p>
+              <Link to="/login"><button className={styles.signUpLink}>Log In</button></Link>
             </div>
           </div>
         </div>
@@ -60,9 +63,9 @@ export default function forgotPassword() {
               Reset Password
             </button>
           </form>
-          <Link to="/login">Log in</Link>
         </div>
       </div>
+    </div>
     </div>
   );
 }
