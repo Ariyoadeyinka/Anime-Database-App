@@ -69,7 +69,14 @@ export default function Login() {
             </button>
           </form>
           <Link to="/forgot-password">Forgot password?</Link>
-          
+        <div className={styles.socialButtons}> 
+          <p>Or Log in with:</p>
+        <div className={styles.realSocialButton}>
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-square-x-twitter"></i>
+        <i class="fa-brands fa-facebook"></i>
+        </div>
+        </div>
         </div>
       </div>
     </div>

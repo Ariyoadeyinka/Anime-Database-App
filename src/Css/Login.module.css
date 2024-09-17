@@ -70,6 +70,7 @@
     align-items: center;
     background-color: white;
     border-radius: 0 15px 15px 0;
+    position: relative;
   }
   
   @media (max-width: 768px) {
@@ -86,8 +87,19 @@
   
     .loginForm {
       width: 100%;
-      border-radius: 0 0 15px 15px;
+      padding: 30px;
     }
+  
+    .realSocialButton i {
+      font-size: 1.8rem;
+      margin: 0 10px;
+    }
+  
+    .forgotPass {
+      text-align: center;
+      align-self: center; 
+    }
+  
   }
   .loginUsername{
   padding: 8px;
@@ -111,14 +123,7 @@
     color: white;
     background-color: #97BC62;
   }
-  .forgotPass{
-    color: #97BC62;
-   margin-right: auto;
-   margin-top: 10px;
-  }
-  .forgotPass:hover{
-    color: #97BC62;
-  }
+
   .signUpLink {
     color: white;
     font-size: 20px;
@@ -138,3 +143,57 @@
     color: white;
     box-shadow: 0 0 20px #97BC62, 0 0 30px #97BC62, 0 0 40px #97BC62;
   }
+  .socialButtons{
+    margin-top: 3px;
+  }
+  
+  .forgotPass {
+    color: #97BC62;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: left;
+    align-self: flex-start; 
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .forgotPass:hover {
+    color: #72a44b;
+    text-decoration: underline;
+  }
+  
+
+  .socialButtons {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+  }
+  
+  .socialButtons p {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+
+  .realSocialButton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .realSocialButton i {
+    font-size: 2rem;
+    margin: 0 15px;
+    color: #97BC62;
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .realSocialButton i:hover {
+    transform: scale(1.2);
+    color: #72a44b;
+  }
+  

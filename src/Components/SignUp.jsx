@@ -75,6 +75,15 @@ export default function Signup() {
             />
             <button className={styles.loginButton} disabled={loading}>Sign Up</button>
           </form>
+
+          <div className={styles.socialButtons}> 
+          <p>Or Sign Up with:</p>
+        <div className={styles.realSocialButton}>
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-square-x-twitter"></i>
+        <i class="fa-brands fa-facebook"></i>
+        </div>
+        </div>
         </div>
       </div>
     </div>
