@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "../Css/Login.module.css";
 import backgroundImage from '../Assets/LoginImg.jpg';
 import { useRef } from "react";
@@ -39,12 +40,11 @@ export default function Signup() {
         <div className={styles.imageContainer}>
           <img src={backgroundImage} alt="" />
           <div className={styles.imageOverlay}>
-            <div>
+           <div>
               <h1 className="text-center">🍥Welcome🍥</h1>
-              <p className="text-center">
-                To The Biggest Anime Database On The Internet
-              </p>
-            </div> 
+              <p className="text-center">Already have an account?</p>
+              <Link to="/login"><button className={styles.signUpLink}>Log In</button></Link>
+            </div>
           </div>
         </div>
         <div className={styles.loginForm}>

@@ -30,14 +30,17 @@ export default function Login() {
   }
 
   return (
-    <div className={styles.container}>
+    <div>
+      <div className={styles.headerText}><h1>LOG IN</h1></div>
+      <div className={styles.container}>
       <div className={styles.loginDiv}>
         <div className={styles.imageContainer}>
           <img src={backgroundImage} alt="" />
           <div className={styles.imageOverlay}>
             <div>
               <h1 className="text-center">🍥Welcome🍥</h1>
-              <p className="text-center">To The Biggest Anime Database On The Internet</p>
+              <p className="text-center">Don't have an account?</p>
+              <Link to="/signup"><button className={styles.signUpLink}>Sign Up</button></Link>
             </div>
           </div>
         </div>
@@ -66,9 +69,11 @@ export default function Login() {
             </button>
           </form>
           <Link to="/forgot-password">Forgot password?</Link>
-          <Link to="/signup">Sign Up</Link>
+          
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
