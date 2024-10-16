@@ -196,4 +196,15 @@
     transform: scale(1.2);
     color: #72a44b;
   }
-  
+  .signIngoogleButton{
+    background-color: white;
+    padding: 5px;
+    width: 50%;
+    color: #72a44b;
+    border: 2px solid #72a44b;
+  }
+
+  .signIngoogleButton:hover {
+    background-color: #72a44b;
+    color: white;
+  }

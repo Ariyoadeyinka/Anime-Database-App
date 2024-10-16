@@ -11,7 +11,7 @@ export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { signup, googleLogin } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();  
@@ -32,6 +32,16 @@ export default function Signup() {
       setError('Failed to create an account');
     }
     setLoading(false);
+  }
+
+  async function handleGoogleLogin() {
+    try {
+      setError('');
+      await googleLogin();
+      navigate("/");
+    } catch (error) {
+      setError("Failed to log in with Google");
+    }
   }
 
   return (
@@ -77,12 +87,7 @@ export default function Signup() {
           </form>
 
           <div className={styles.socialButtons}> 
-          <p>Or Sign Up with:</p>
-        <div className={styles.realSocialButton}>
-        <i class="fa-brands fa-google"></i>
-        <i class="fa-brands fa-square-x-twitter"></i>
-        <i class="fa-brands fa-facebook"></i>
-        </div>
+          <button  className={styles.signIngoogleButton} onClick={handleGoogleLogin}>Sign Up With <i class="fa-brands fa-google"></i></button>
         </div>
         </div>
       </div>

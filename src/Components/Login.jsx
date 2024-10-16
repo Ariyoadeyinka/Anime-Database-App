@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, googleLogin } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); 
@@ -27,6 +27,16 @@ export default function Login() {
       setError('Failed to log in');
     }
     setLoading(false);
+  }
+
+  async function handleGoogleLogin() {
+    try {
+      setError('');
+      await googleLogin();
+      navigate("/");
+    } catch (error) {
+      setError("Failed to log in with Google");
+    }
   }
 
   return (
@@ -70,12 +80,8 @@ export default function Login() {
           </form>
           <Link to="/forgot-password">Forgot password?</Link>
         <div className={styles.socialButtons}> 
-          <p>Or Log in with:</p>
-        <div className={styles.realSocialButton}>
-        <i class="fa-brands fa-google"></i>
-        <i class="fa-brands fa-square-x-twitter"></i>
-        <i class="fa-brands fa-facebook"></i>
-        </div>
+         <button  className={styles.signIngoogleButton} onClick={handleGoogleLogin}>Log In With <i class="fa-brands fa-google"></i></button>
+      
         </div>
         </div>
       </div>
