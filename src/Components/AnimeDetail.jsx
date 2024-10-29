@@ -1,98 +1,115 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styles from "../Css/AnimeDetails.module.css";
 import crunchyrollIcon from "../Assets/Crunchyroll.png";
 import funimationIcon from "../Assets/Funimation.png";
 import netflixIcon from "../Assets/Netflix.png";
 import shahidIcon from "../Assets/Shahid.png";
-export default function AnimeDetail({ animeId }) {
-  const [anime, setAnime] = useState([]);
+
+export default function AnimeDetail() {
+  const { animeId } = useParams();
+  const [anime, setAnime] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const icons = {
     Crunchyroll: crunchyrollIcon,
     Funimation: funimationIcon,
     Netflix: netflixIcon,
     Shahid: shahidIcon,
   };
+
   useEffect(() => {
     async function fetchAnime() {
-      const res = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/full`);
-      const data = await res.json();
-      console.log(data.data);
-      setAnime(data.data);
-      setIsLoading(false);
+      if (!animeId) return; 
+      try {
+        const res = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/full`);
+        if (!res.ok) throw new Error("Failed to fetch anime data.");
+        const data = await res.json();
+        setAnime(data.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
     fetchAnime();
   }, [animeId]);
-  return (
-    <div>
-      <div className={styles.mainContainer}>
-        <div className={styles.contentContainer}>
-          <div className={styles.innercontentContainer}>
-            <div className={styles.anotherimageContainer}>
-              <img
-                src={anime?.images?.jpg?.image_url}
-                className={`card-img-top ${styles.Mainimage}`}
-                alt={anime?.title}
-              />
-            </div>
 
-            <div className={styles.textContainer}>
-              <div className={styles.textContainercontents}>
-                {" "}
-                <h5>Title: </h5> <p>{anime.title}</p>
-              </div>
-              <div className={styles.textContainercontents}>
-                {" "}
-                <h5>Rating:</h5> <p> {anime.rating}</p>
-              </div>
-              <div className={styles.textContainercontents}>
-                <h5>Status:</h5> <p>{anime.status}</p>
-              </div>
-              <div className={styles.textContainercontents}>
-                <h5>IMDB score:</h5> <p>{anime.score}</p>
-              </div>
-              <div className={styles.textContainercontents}>
-                <h5>Genres:</h5>
-                <ul>
-                  {anime.genres?.map((genre) => (
-                    <li key={genre.id}>{genre.name}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className={styles.textContainercontents}></div>
-            </div>
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <div className={styles.mainContainer}>
+      <div className={styles.contentContainer}>
+        <h1 className={styles.animeName}>{anime.title}</h1>
+        <div className={styles.innerContentContainer}>
+          <div className={styles.anotherImageContainer}>
+            <img
+              src={anime?.images?.jpg?.image_url}
+              className={styles.mainImage}
+              alt={anime?.title}
+            />
           </div>
 
-          <p>{anime?.synopsis}</p>
-          <h5>Watch {anime.title} on:</h5>
-          <ul style={{ display: "flex", listStyleType: "none", padding: 0 }}>
-            {anime.streaming?.map((service, index) => (
-              <li key={index} style={{ marginRight: "10px" }}>
-                <a href={service.url} target="_blank" rel="noopener noreferrer">
-                  <img
-                    src={icons[service.name]}
-                    alt={service.name}
-                    style={{ width: "100%", height: "50px" }}
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.textContainer}>
+            <h5 className={styles.synopsisHeader}>Synopsis</h5>
+            <p>{anime?.synopsis}</p>
 
-          <div>
-            <h2>Trailer:</h2>
-            <div className={styles.trailerContainer}>
-              {anime.trailer && anime.trailer.embed_url ? (
-                <iframe
-                  className={styles.trailerIframe}
-                  title={`${anime.title} Trailer`}
-                  src={anime.trailer.embed_url}
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <p>No trailer available</p>
-              )}
+            <div className={styles.lastSection}>
+              <div className={styles.lastSectionBoxes}>
+                <i className="fa-solid fa-folder-open"></i>
+                {anime.genres?.map((genre) => (
+                  <li key={genre.id}>{genre.name}</li>
+                ))}
+              </div>
+
+              <div className={styles.lastSectionBoxes}>
+                <i className="fa-solid fa-tv"></i>
+                <p>{anime.status}</p>
+              </div>
+
+              <div className={styles.lastSectionBoxes}>
+                <i className="fa-brands fa-imdb"></i>
+                <p>{anime.score}</p>
+              </div>
+
+              <div className={styles.lastSectionBoxeslast}>
+                <i className="fa-solid fa-shield"></i>
+                <p>{anime.rating}</p>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <h5>Watch {anime.title} on:</h5>
+        <ul className={styles.streamingList}>
+          {anime.streaming?.map((service, index) => (
+            <li key={index}>
+              <a href={service.url} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={icons[service.name]}
+                  alt={service.name}
+                  className={styles.streamingIcon}
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div>
+          <h2>Trailer:</h2>
+          <div className={styles.trailerContainer}>
+            {anime.trailer && anime.trailer.embed_url ? (
+              <iframe
+                className={styles.trailerIframe}
+                title={`${anime.title} Trailer`}
+                src={anime.trailer.embed_url}
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <p>No trailer available</p>
+            )}
           </div>
         </div>
       </div>

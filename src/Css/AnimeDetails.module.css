@@ -1,54 +1,122 @@
 .mainContainer {
-  padding: 100px;
-}
-.contentContainer {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.innercontentContainer {
-  display: flex;
-  color: white;
-  border-radius: 20px;
-  background-color: #97bc62;
-  margin-bottom: 50px;
-}
-.anotherimageContainer {
-  width: 50%;
-  padding: 20px;
-}
-.imageContainer {
-  width: 50%;
-  height: 100%;
-}
-.anotherimageContainer img {
-  width: 100%;
-  border-radius: 5px;
-  height: auto;
-}
-.textContainer {
-  place-items: center;
-  width: 100%;
-  padding: 5%;
+  padding: 50px 20px;
 }
 
-.textContainercontents {
+.contentContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #333;
+}
+
+.animeName {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  color: #97bc62;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.5em;
+}
+.synopsisHeader{
+  color: #97bc62;
+}
+.innerContentContainer {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
 }
-.textContainercontents p {
-  margin-left: 10px;
-  margin-top: 1px;
+
+@media (min-width: 768px) {
+  .innerContentContainer {
+    flex-direction: row;
+  }
 }
-.textContainercontents ul li {
+
+.anotherImageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.textContainercontents ul {
-  margin-left: -10px;
-  margin-top: 1px;
+
+.mainImage {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  height: auto;
 }
+
+.textContainer {
+  flex: 2;
+  padding: 10px;
+}
+
+.textContainerContents {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.textContainerContents h5 {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.streamingList {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.streamingIcon {
+  width: 50px;
+  height: auto;
+}
+
 .trailerContainer {
-  height: 500px;
+  margin-top: 20px;
+  position: relative;
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
 }
+
 .trailerIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+}
+.lastSection{
+  display: flex;
+  margin-top: 30px;
+}
+.lastSectionBoxes{
+  text-align: center;
+  border-right: 1px solid lightgrey;
+  width: 150px;
+}
+.lastSectionBoxes li{
+  list-style: none;
+}
+.lastSectionBoxes i{
+  font-size: 40px;
+  color: #97bc62;
+}
+.lastSectionBoxeslast{
+  text-align: center;
+  width: 150px;
+}
+.lastSectionBoxeslast i{
+  font-size: 40px;
+  color: #97bc62;
 }

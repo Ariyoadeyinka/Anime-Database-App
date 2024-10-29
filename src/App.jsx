@@ -38,7 +38,7 @@ function App() {
               }
             />
             <Route
-              path="/anime/:id"
+              path="/anime/:animeId"
               element={
                 <PrivateRoute>
                   <Navbar />
